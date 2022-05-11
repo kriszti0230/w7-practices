@@ -1,0 +1,68 @@
+#root{
+    width: 100%;
+    min-height: 100vh;
+    
+    background-color: #ccc;         // a teljes képre vonatkozik
+    
+   
+
+ #menu-btn {
+        position: fixed;
+        top: 0;
+        right:0;
+    
+        width: 60px;
+        height: 60px;
+    
+        background-color: black;
+    
+        // nem tudunk class nevet adni nekik, ezért felsoroltuk a  b-a-t (így csak 1-szer kell leírni.)
+        &::before, 
+        &::after {
+            content: "";
+    
+            position: absolute;
+            right: 10px;
+    
+            width: 40px;
+            height: 4px;
+    
+            background-color: white;
+            
+            transition: top 500ms, transform 500ms ;    //oldalról nyílik; meg lehet nézni, h középen nyíljon h lehet beállítani
+            
+        }
+        &::before {
+        top: 20px;
+        
+        }
+        
+        &::after {
+        top: 36px;
+        }
+    }
+//a before, after: ezért van két vonal; jelentősége: nem kerül bele a végső DOM-ba, a css design-ba marad; 
+//grafikai elemeket tudunk vele megcsinálni, a DOM ezáltal letisztult marad, mert nem kerül bele. Sok mindent meg lehet vele csinálni.
+//content nélkül nem jelenik meg a before és az after sem.
+
+     
+
+    &.menu-opened {                                                 //a &menu-opened a #root-on belül van
+            background-color: #fff;
+
+        #menu-btn {
+                background-color: #333;                 //idemásolom a b-a-t és 1-2 vonal fog változni klikkelésre
+
+        &::before {
+                    top: 28px;
+                    transform: rotate(45deg);
+                    
+                    }
+                
+        &::after {
+                    top: 28px;
+                    transform: rotate(-45deg);                      //transform hatására x-re ugrik kattintásra
+         }
+        }                
+    }
+}
