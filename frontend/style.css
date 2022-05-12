@@ -6,6 +6,7 @@
 
 #root #menu-btn {
   position: fixed;
+  z-index: 100;
   top: 0;
   right: 0;
   width: 60px;
@@ -52,5 +53,33 @@
   top: 28px;
   -webkit-transform: rotate(-45deg);
           transform: rotate(-45deg);
+}
+
+section {
+  width: 100%;
+  height: 100vh;
+}
+
+nav {
+  position: fixed;
+  z-index: 99;
+  top: 0;
+  right: -300px;
+  width: 300px;
+  height: 100vh;
+  padding: 40px;
+  background-color: black;
+  color: white;
+  -webkit-transition: right 2s;
+  transition: right 2s;
+}
+
+nav.nav-opened {
+  right: 0;
+}
+
+nav a {
+  display: block;
+  margin-bottom: 20px;
 }
 /*# sourceMappingURL=style.css.map */
